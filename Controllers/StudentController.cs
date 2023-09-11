@@ -14,17 +14,18 @@ namespace DigitalExaminationSys.Controllers
             _logger = logger;
         }
 
+        [Authorize(Roles = "Student")]
         public IActionResult Index()
         {
             return View();
         }
-        [Authorize]
 
+        [Authorize(Roles ="Student")]
         public IActionResult AllResponses()
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles ="Student")]
 
         public IActionResult GetExam()
         {

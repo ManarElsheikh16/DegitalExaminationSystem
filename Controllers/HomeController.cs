@@ -175,11 +175,21 @@ namespace DigitalExaminationSys.Controllers
                     }
                     else
                     {
-                        ModelState.AddModelError("", "Invalid UserName or Password");
+                        ModelState.AddModelError("Password", "Invalid Password");
                     }
                 }
+                ModelState.AddModelError("UserName", "Invalid UserName");
+
             }
             return View(loginViewModel);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+           await _SignInManager.SignOutAsync();
+
+            return RedirectToAction("Login");
         }
 
 

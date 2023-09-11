@@ -13,25 +13,25 @@ namespace DigitalExaminationSys.Controllers
         {
             _logger = logger;
         }
-
+        [Authorize(Roles = "Professor")]
         public IActionResult Index()
         {
             return View();
         }
 
-        [Authorize]
+        [Authorize(Roles = "Professor")]
 
         public IActionResult AllExams()
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Professor")]
 
         public IActionResult CreateExam()
         {
             return View();
         }
-        [Authorize]
+        [Authorize(Roles = "Professor")]
 
         public IActionResult Reports()
         {
