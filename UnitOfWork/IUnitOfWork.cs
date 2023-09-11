@@ -1,7 +1,7 @@
 ﻿using DigitalExaminationSys.Models;
 using DigitalExaminationSys.Repository.Interfaces;
 
-namespace DigitalExaminationSys.UnitOfWork.Interfaces
+namespace DigitalExaminationSys.UnitOfWork
 {
     public interface IUnitOfWork
     {

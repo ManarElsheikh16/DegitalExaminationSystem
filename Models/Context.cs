@@ -1,5 +1,6 @@
 ﻿using DigitalExaminationSys.Extenstions;
 using DigitalExaminationSys.Repository.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,7 @@ namespace DigitalExaminationSys.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
             modelBuilder.ApplyGlobalFilter<IBaseModel<int>>(x => !x.IsDeleted);
 
             modelBuilder.ApplyGlobalFilter<IBaseModel<string>>(x => !x.IsDeleted);
@@ -38,5 +40,7 @@ namespace DigitalExaminationSys.Models
                 optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-07S7M2O;Initial Catalog=ExaminationSystem;Integrated Security=True; trust server certificate = true");
             }
         }
+
+    
     }
 }

@@ -1,9 +1,8 @@
 ﻿using AutoMapper;
 using DigitalExaminationSys.Models;
-using DigitalExaminationSys.UnitOfWork.Interfaces;
+using DigitalExaminationSys.UnitOfWork;
 using DigitalExaminationSys.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Security.Claims;
 
 namespace DigitalExaminationSys.Services
@@ -12,8 +11,8 @@ namespace DigitalExaminationSys.Services
     {
         UserManager<ApplicationUser> _userManager;
         SignInManager<ApplicationUser> _signInManager;
-        IUnitOfWork _UnitOfWork { get; set; }
-        IMapper _Mapper { get; set; }
+        IUnitOfWork _UnitOfWork;
+        IMapper _Mapper;
         public AccountService(IUnitOfWork UnitOfWork, IMapper Mapper,
                     UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
         {
@@ -25,10 +24,7 @@ namespace DigitalExaminationSys.Services
         
         public async Task<IdentityResult> AddStudent(RegisterationViewModel registerationViewModel)
         {
-            Student Student=_Mapper.Map<Student>(registerationViewModel);
-            _UnitOfWork.StudentRepository.Insert(Student);
-            _UnitOfWork.SaveChanges();
-
+            //save in applicationUser table
             ApplicationUser applicationUser=_Mapper.Map<ApplicationUser>(registerationViewModel);
             IdentityResult IdentityResult=await _userManager.CreateAsync(applicationUser, registerationViewModel.Password);
 
@@ -36,13 +32,18 @@ namespace DigitalExaminationSys.Services
 
             await _signInManager.SignInWithClaimsAsync(applicationUser, false, addClaim);
 
+            //save in Student table
+
+            Student Student = _Mapper.Map<Student>(applicationUser);
+            _UnitOfWork.StudentRepository.Insert(Student);
+            _UnitOfWork.SaveChanges();
+
             return IdentityResult;
         }
         public async Task<IdentityResult> AddProfessor(RegisterationViewModel registerationViewModel)
         {
-            Professor professor=_Mapper.Map<Professor>(registerationViewModel);
-            _UnitOfWork.ProfessorRepository.Insert(professor);
-            _UnitOfWork.SaveChanges();
+
+            //save in applicationUser table
 
             ApplicationUser applicationUser = _Mapper.Map<ApplicationUser>(registerationViewModel);
             IdentityResult IdentityResult = await _userManager.CreateAsync(applicationUser, registerationViewModel.Password);
@@ -50,6 +51,12 @@ namespace DigitalExaminationSys.Services
             List<Claim> addClaim = new List<Claim>();
 
             await _signInManager.SignInWithClaimsAsync(applicationUser, false, addClaim);
+
+            //save in Professor table
+
+            Professor professor = _Mapper.Map<Professor>(applicationUser);
+            _UnitOfWork.ProfessorRepository.Insert(professor);
+            _UnitOfWork.SaveChanges();
 
             return IdentityResult;
 

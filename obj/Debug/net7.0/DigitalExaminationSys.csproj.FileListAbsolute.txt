@@ -86,3 +86,11 @@ C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationS
 C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\AutoMapper.dll
 C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\AutoMapper.Extensions.ExpressionMapping.dll
 C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\Autofac.Integration.Mvc.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\System.Web.Mvc.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\System.Web.Razor.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\System.Web.Helpers.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\System.Web.WebPages.Deployment.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\System.Web.WebPages.Razor.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\System.Web.WebPages.dll
+C:\Users\Electronica Care\Desktop\Digital Examination System\DigitalExaminationSys\bin\Debug\net7.0\Microsoft.Web.Infrastructure.dll

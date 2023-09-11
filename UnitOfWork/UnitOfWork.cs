@@ -5,15 +5,13 @@ using Microsoft.AspNetCore.Identity;
 
 namespace DigitalExaminationSys.UnitOfWork
 {
-    public class UnitOfWork
+    public class unitOfWork:IUnitOfWork
     {
         Context _context;
-        UserManager<ApplicationUser> _userManager;
 
-        public UnitOfWork(Context context, UserManager<ApplicationUser> userManager)
+        public unitOfWork(Context context)
         {
             _context = context;
-            _userManager = userManager;
             BeginTransaction();
         }
 

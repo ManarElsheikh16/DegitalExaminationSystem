@@ -1,5 +1,94 @@
-﻿@{
+﻿@model DigitalExaminationSys.ViewModels.RegisterationViewModel
+@{
     ViewData["Title"] = "RegisterProfessor";
 }
 
-<p>Register Professor</p>
+
+
+<section class="bg-image">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-2">
+                            <p class="text-center h2 fw-bold mb-3 mx-1 mx-md-4" style=" font-family: 'Alkatra' , cursive;">Sign up Now!</p>
+
+                            <form class="mx-1 mx-md-1" asp-controller="Home" asp-action="RegisterProfessor" method="post">
+                                @Html.AntiForgeryToken()
+
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-group form-outline flex-fill mb-0">
+                                        <label class="form-label" for="UserName">Your UserName</label>
+                                        <input type="text" id="UserName" name="UserName" asp-for="UserName" class="form-control" />
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                    <div class=" form-group form-outline flex-fill mb-0">
+                                        <label class="form-label" for="Email">Your Email</label>
+                                        <input type="email" id="Email" name="Email" asp-for="Email" class="form-control" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                    <div class=" form-group form-outline flex-fill mb-0">
+                                        <label class="form-label" for="PhoneNumber">Your Phone Number</label>
+                                        <input type="text" id="PhoneNumber" name="PhoneNumber" asp-for="PhoneNumber" class="form-control" />
+                                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                    <div class=" form-group form-outline flex-fill mb-0">
+                                        <label class="form-label" for="Address">Your Address</label>
+                                        <input type="text" id="Address" naame="Address" asp-for="Address" class="form-control" />
+                                        <span asp-validation-for="Address" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                    <div class=" form-group form-outline flex-fill mb-0">
+                                        <label class="form-label" for="Password">Password</label>
+                                        <input type="password" id="Password" name="Password" asp-for="Password" class="form-control" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-2">
+                                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                    <div class=" form-group form-outline flex-fill mb-0">
+                                        <label class="form-label" for="ConfirmPassword">Repeat your password</label>
+                                        <input type="password" id="ConfirmPassword" name="ConfirmPassword" asp-for="ConfirmPassword" class="form-control" />
+                                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                                    </div>
+                                </div>
+
+                                <div class="d-flex justify-content-center mx-4  mb-lg-4">
+                                    <button type="submit" class="btn btn-primary btn-md" style=" font-family: 'Alkatra' , cursive;width:150px">Register</button>
+                                </div>
+
+                                <p class="text-center text-muted mb-0" style=" font-family: 'Alkatra' , cursive;">
+                                    Have already an account? <a href="@Url.Action("Login", "Home")" class="fw-bold text-body"><u>Login here</u></a>
+                                </p>
+
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

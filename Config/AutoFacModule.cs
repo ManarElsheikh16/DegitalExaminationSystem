@@ -4,6 +4,8 @@ using DigitalExaminationSys.Repository;
 using DigitalExaminationSys.UnitOfWork;
 using Autofac;
 using DigitalExaminationSys.Services;
+using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 
 namespace DigitalExaminationSys.Config
 {
@@ -13,8 +15,9 @@ namespace DigitalExaminationSys.Config
         {
             builder.RegisterType(typeof(Context)).InstancePerLifetimeScope();
             builder.RegisterGeneric(typeof(GenericRepository<,>)).As(typeof(IGenericRepository<,>)).InstancePerLifetimeScope();
-          //  builder.RegisterType(typeof(UnitOfWork)).As(typeof(IUnitOfWork)).InstancePerLifetimeScope();
+            builder.RegisterType(typeof(unitOfWork)).As(typeof(IUnitOfWork)).InstancePerLifetimeScope();
             builder.RegisterAssemblyTypes(typeof(AccountService).Assembly).InstancePerLifetimeScope();
+
 
         }
     }

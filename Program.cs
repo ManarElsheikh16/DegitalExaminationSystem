@@ -3,8 +3,10 @@ using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using DigitalExaminationSys.Config;
 using DigitalExaminationSys.Models;
+using DigitalExaminationSys.Profiles;
 using DigitalExaminationSys.Services;
-using DigitalExaminationSys.UnitOfWork.Interfaces;
+using DigitalExaminationSys.UnitOfWork;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
@@ -19,13 +21,33 @@ namespace DigitalExaminationSys
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            var app = builder.Build();
+          
 
-            //Configure AutoFacModule
-            builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+           // Configure AutoFacModule
+              builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
             builder.Host.ConfigureContainer<ContainerBuilder>(opt =>
-                opt.RegisterModule(new AutoFacModule()));
+            opt.RegisterModule(new AutoFacModule()));
+
+
+            //Register AutoMapper
+            builder.Services.AddAutoMapper(typeof(ProfessorProfile).Assembly);
+            builder.Services.AddAutoMapper(typeof(StudentProfile).Assembly);
+
+
+
+
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireDigit = false;
+            })
+            .AddEntityFrameworkStores<Context>();
+
+            var app = builder.Build();
+
+         
 
 
             // Configure the HTTP request pipeline.

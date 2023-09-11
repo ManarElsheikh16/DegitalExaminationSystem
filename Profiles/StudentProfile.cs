@@ -8,8 +8,8 @@ namespace DigitalExaminationSys.Profiles
     {
         public StudentProfile() 
         {
-            CreateMap<ApplicationUser, Student>();
-            CreateMap<RegisterationViewModel,Student>();
+            CreateMap<ApplicationUser,Student>();
+            CreateMap<RegisterationViewModel,ApplicationUser>();
         }
     }
 }
