@@ -6,9 +6,8 @@ namespace DigitalExaminationSys.Models
 {
     public enum Type
     {
-        MultipleChioces,
+        MultipleChoices,
         True_False,
-        FillInBlank,
         EssayQuestion,
     }
     public class Question : IBaseModel<int>
@@ -20,11 +19,11 @@ namespace DigitalExaminationSys.Models
         public Type Type { get; set; }
         public List<Option> Options { get; set; }
         public int QuesGrade { get; set; }
-        public string CorrectAnswe { get; set; }
+        public string CorrectAnswer { get; set; }
         [ForeignKey("Exam")]
         public int ExamId { get; set; }
         public Exam Exam { get; set; }
-        public List<Response> Responses { get; set; }
+        public List<Response>? Responses { get; set; }
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }
     }

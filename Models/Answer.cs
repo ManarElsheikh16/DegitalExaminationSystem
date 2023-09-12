@@ -14,7 +14,7 @@ namespace DigitalExaminationSys.Models
 
         public bool IsCorrect { get; set; }
 
-        public List<Response> Responses { get; set; }
+        public List<Response>? Responses { get; set; }
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }
     }

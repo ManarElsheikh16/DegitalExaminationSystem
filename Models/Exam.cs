@@ -15,8 +15,8 @@ namespace DigitalExaminationSys.Models
         [ForeignKey("Professor")]
         public string ProfessorId { get; set; }
         public Professor Professor { get; set; }
-        public List<Question> Questions { get; set; }
-        public List<Response> Responses { get; set; }
+        public List<Question>? Questions { get; set; }
+        public List<Response> ?Responses { get; set; }
 
         [DefaultValue(false)]
         public bool IsDeleted { get; set; }

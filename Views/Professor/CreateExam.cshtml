@@ -5,5 +5,120 @@
 }
 
 
-<p>Create Exam</p>
+
+
+<section class="mt-4">
+    <div class="container py-5 ">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <img src="https://en.tums.ac.ir/images/www/en/news/news-primary/2022/1660628379-exam2.jpg"
+                         class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
+                         alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2" style="font-family: 'Alkatra', cursive;">Exam Creation Form</h3>
+
+                        <form class="px-md-2">
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form3Example1q">Exam Title:</label>
+                                <input type="text" id="form3Example1q" class="form-control" />
+                            </div>
+
+                            <div class="col-md-6 mb-4">
+                                 <div class="form-group">
+                                      <label for="exampleSelect">Select Course:</label>
+                                         <select class="form-select" id="CourseId">
+                                        <option value="" >Select Course </option>
+                                               @foreach(Course course in Model)
+                                        {
+                                          <option value=@course.Id>@course.Name</option>
+
+                                        }
+                                         </select>
+                                  </div>
+
+                            </div>
+
+                            <div class="row mb-4">
+
+                                <div class="col-4">
+                                    <h4 style="font-family: 'Alkatra', cursive;">Add Question</h4>
+                                </div>
+
+                                <div class="col-6 ">
+                                    <button id="Addbtn" class="btn btn-primary btn-sm rounded-circle w-auto fw-bold fs-4">
+                                    <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+  
+                            </div>
+
+
+                            <div id="Question" style="display: none;">
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form3Example1q">Question:</label>
+                                <textarea id="form3Example1q" class="form-control"></textarea>
+                            </div>
+
+                             
+
+                            <div class="col-md-6 mb-4">
+
+                                    <div class="form-group">
+                                        <label for="exampleSelect">Select Type Of Question:</label>
+                                        <select class="form-select" id="exampleSelect">
+                                            <option value="">Select Type Of Question</option>
+                                            <option value="0">Multiple Choices </option>
+                                            <option value="1">True/False</option>
+                                            <option value="2">Essay Questions</option>
+                                        </select>
+                                    </div>
+
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Option:</label>
+                                    <input type="text" id="form3Example1q" class="form-control" />
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Correct Answer:</label>
+                                    <input type="text" id="form3Example1q" class="form-control" />
+                                </div>
+
+                                <div class="form-outline mb-4 w-50">
+                                    <label class="form-label" for="form3Example1q">Question Points:</label>
+                                    <input type="number" id="form3Example1q" class="form-control" />
+                                </div>
+                           <hr/>
+                     </div>
+                     <div id="AppendedQuestion">
+
+                     </div>
+                          
+
+                            <button type="submit" style="font-family: 'Alkatra', cursive;" class="btn btn-primary btn-lg mb-1">Submit</button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $("#Addbtn").click(function (e) {
+            e.preventDefault(); // Prevent the default form submission behavior
+            // Clone the template and append it to the body
+            var newQuestion = $("#Question").clone().removeAttr('style');
+            $("#AppendedQuestion").append(newQuestion);
+        });
+    });
+</script>
+
 
